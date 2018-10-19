@@ -46,6 +46,23 @@ formulario.addEventListener("submit", (evt) => {
     mostrar();
  }); 
 
+var numeroAeliminar=    
+
+ formulario.addEventListener("button", (evt) => {
+    evt.preventDefault();
+    let bitacora = {
+    cant:cont,
+    fecha: formulario[1].value,
+    descripcion: formulario[2].value,
+    cantidad: formulario[3].value
+  }
+    bitacoras.splice(2,1);
+    cont++;
+    mostrar();
+ }); 
+
+
+
  const crearElemento = (bitacora, tbody) =>{
     let tr = document.createElement("tr");
     Object.values(bitacora).forEach(item => {
@@ -55,10 +72,12 @@ formulario.addEventListener("submit", (evt) => {
      tr.appendChild(td);
     });
    tbody.appendChild(tr);
+   tr.setAttribute('class','click');
 console.log(tbody);
   } 
 
   const eliminar= (tbody)=>{
+      console.log("hola");
     while (tbody.firstChild) {
      tbody.removeChild(tbody.firstChild);
      console.log(tbody);
@@ -79,6 +98,7 @@ const agregar= ()=>{
 
 
    const mostrar = ()=>{
+ 
     if (document.querySelector(".tabla-btc tbody").childElementCount > 0) {
      eliminar(document.querySelector(".tabla-btc tbody"));
     }
